@@ -4,20 +4,53 @@
 <head>
   <title><%= title %></title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <style>
+  .clicked{
+    pointer-events: none;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .show{
+    display: block;
+  }
+  </style>
 </head>
 
 <body>
-  <h1>how do you feel rifht now?</h1>
-  <button id="1">1</button>
-  <button id="2">2</button>
-  <button id="3">3</button>
-  <button id="4">4</button>
-  <button id="5">5</button>
+  <h1>how do you feel right now?</h1>
+
+  <div id="btns">
+
+  <button id="btn1" onclick="hide()" >1</button>
+  <button id="btn2" onclick="hide()">2</button>
+  <button id="btn3" onclick="hide()">3</button>
+  <button id="btn4" onclick="hide()">4</button>
+  <button id="btn5" onclick="hide()">5</button>
   
+  </div>
+<br>
+<span id="confirmation" class="hide">het bericht is verzonden!</span>
+
   <script src="javascripts/primus.js"></script>
-  <!--
-  <script src="javascripts/party.js"></script>
-  -->
+  
+  <script src="javascripts/clicknumber.js"></script>
+
+  <script>
+    let hide = () => {
+        //.log("verberg nu alles");
+        let buttons = document.querySelectorAll("button");
+        for(let i = 0; i < 5; i++){
+            buttons[i].classList.add("clicked");
+        }
+        let conf = document.getElementById('confirmation');
+        conf.classList.remove("hide");
+        conf.classList.add("show");
+    }
+  </script>
+  
 </body>
 
 </html>
